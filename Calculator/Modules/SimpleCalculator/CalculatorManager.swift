@@ -18,6 +18,13 @@ enum Operator {
 protocol Calculator {
     var printer: CalculatorPrinter { get set }
 
+    /**
+    Calculate 2 numbers with given operator
+    - Parameter firstNumber: The first number to calculate
+    - Parameter secondNumber: The second number to calculate
+    - Parameter _operator: Operator should perform with these two numbers
+     - Returns: The result of calculation. Nil when has invalid operator like number / 0
+    */
     func calculate(firstNumber: Decimal, secondNumber: Decimal, _operator: Operator) -> Decimal?
 }
 
@@ -33,13 +40,7 @@ class SimpleCalculatorManager: Calculator {
         self._printer = printer
     }
 
-    /**
-     Calculate 2 numbers with given operator
-     - Parameter firstNumber: The first number to calculate
-     - Parameter secondNumber: The second number to calculate
-     - Parameter _operator: Operator should perform with these two numbers
-      - Returns: The result of calculation. Nil when has invalid operator like number / 0
-     */
+    
     func calculate(firstNumber: Decimal, secondNumber: Decimal, _operator: Operator) -> Decimal? {
         switch _operator {
         case .addition:

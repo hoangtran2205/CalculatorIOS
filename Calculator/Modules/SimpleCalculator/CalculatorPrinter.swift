@@ -9,7 +9,15 @@
 import Foundation
 
 protocol CalculatorPrinter {
+    /**
+       Get  presentable String
+    - Parameter result: Result to display.
+    */
     func getDisplayResult(result: Decimal?) -> String
+    /**
+           Print result to debug log
+           - Parameter result: Result to display
+    */
     func printResult(result: Decimal?) -> Void
 }
 
@@ -20,11 +28,7 @@ class SimpleCalculatorPrinter: CalculatorPrinter {
         numberFormatter.maximumFractionDigits = 8        
         numberFormatter.roundingMode = .halfUp
     }
-
-    /**
-        Get  presentable String
-     - Parameter result: Result to display.
-     */
+    
     func getDisplayResult(result: Decimal?) -> String {
         if let result = result {
             let isInteger = floor(result.double) == result.double
@@ -34,10 +38,7 @@ class SimpleCalculatorPrinter: CalculatorPrinter {
         return "Not a number"
     }
 
-    /**
-            Print result to debug log
-            - Parameter result: Result to display
-     */
+    
     func printResult(result: Decimal?) {
         print("Calculation result: \(self.getDisplayResult(result: result))")
     }
