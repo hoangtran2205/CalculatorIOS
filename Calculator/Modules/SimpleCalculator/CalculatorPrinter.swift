@@ -17,7 +17,7 @@ class SimpleCalculatorPrinter: CalculatorPrinter {
     let numberFormatter = NumberFormatter()
 
     init() {
-        numberFormatter.maximumFractionDigits = 8
+        numberFormatter.maximumFractionDigits = 8        
         numberFormatter.roundingMode = .halfUp
     }
 

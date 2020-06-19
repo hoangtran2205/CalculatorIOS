@@ -136,6 +136,7 @@ extension SimpleCalculatorController {
         self.secondNumber = nil
         self.hasOperator = false
         self.selectedOperator = nil
+        self.isInNewRound = true
     }
 
     func handleDotPress() {
@@ -218,6 +219,15 @@ extension SimpleCalculatorController {
             self.result.accept(self.calculatorManager.printer.getDisplayResult(result: result))
 
             self.firstNumber = result
+
+            //Reset calculator if result exceed max number, but keep current result
+            if result?.string.replacingOccurrences(of: ".", with: "").count ?? 0 > SimpleCalculatorController.MAX_NUMBER_LENGTH {
+                self.hasOperator = false
+                self.selectedOperator = nil
+                self.secondNumber = nil
+                self.firstNumber = nil
+                self.isInNewRound = true
+            }
         }
     }
 }
