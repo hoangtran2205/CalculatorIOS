@@ -205,8 +205,7 @@ extension SimpleCalculatorController {
         if let firstNumber = self.firstNumber,
             let secondNumber = self.secondNumber,
             let selectedOperator = self.selectedOperator {
-            let result = self.calculatorManager.calculate(firstNumber: firstNumber, secondNumber: secondNumber, _operator: selectedOperator)
-            print("result: \(result)")
+            let result = self.calculatorManager.calculate(firstNumber: firstNumber, secondNumber: secondNumber, _operator: selectedOperator)            
 
             self.result.accept(self.calculatorManager.printer.getDisplayResult(result: result))
 

@@ -33,8 +33,7 @@ class SimpleCalculatorManager: Calculator {
         self._printer = printer
     }
 
-    func calculate(firstNumber: Decimal, secondNumber: Decimal, _operator: Operator) -> Decimal? {
-        print("first: \(firstNumber), second: \(secondNumber)")
+    func calculate(firstNumber: Decimal, secondNumber: Decimal, _operator: Operator) -> Decimal? {        
         switch _operator {
         case .addition:
             return firstNumber + secondNumber
