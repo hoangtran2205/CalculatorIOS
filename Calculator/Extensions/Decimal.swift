@@ -16,4 +16,8 @@ extension Decimal {
     var string: String {
         return NSDecimalNumber(decimal: self).stringValue
     }
+    
+    var double: Double {
+        return NSDecimalNumber(decimal: self).doubleValue
+    }
 }

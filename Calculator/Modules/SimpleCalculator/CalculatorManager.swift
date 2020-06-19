@@ -33,7 +33,14 @@ class SimpleCalculatorManager: Calculator {
         self._printer = printer
     }
 
-    func calculate(firstNumber: Decimal, secondNumber: Decimal, _operator: Operator) -> Decimal? {        
+    /**
+     Calculate 2 numbers with given operator
+     - Parameter firstNumber: The first number to calculate
+     - Parameter secondNumber: The second number to calculate
+     - Parameter _operator: Operator should perform with these two numbers
+      - Returns: The result of calculation. Nil when has invalid operator like number / 0
+     */
+    func calculate(firstNumber: Decimal, secondNumber: Decimal, _operator: Operator) -> Decimal? {
         switch _operator {
         case .addition:
             return firstNumber + secondNumber

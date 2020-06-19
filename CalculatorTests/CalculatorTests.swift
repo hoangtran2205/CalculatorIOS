@@ -23,17 +23,17 @@ class CalculatorTests: XCTestCase {
         calculatorManager = SimpleCalculatorManager(printer: SimpleCalculatorPrinter())
 
         for _ in 0..<CalculatorTests.MAX_CALCULATIONS - 3 {
-            firstNumbers.append(Decimal(Double.random(in: -10000000...10000000)))
-            secondNumbers.append(Decimal(Double.random(in: -10000000...10000000)))
+            firstNumbers.append(Decimal(Double.random(in: -100000000...100000000)))
+            secondNumbers.append(Decimal(Double.random(in: -100000000...100000000)))
         }
 
         //Append 0 element for testing division operator
-        firstNumbers.append(Decimal(Double.random(in: -10000000...10000000)))
+        firstNumbers.append(Decimal(Double.random(in: -100000000...100000000)))
         secondNumbers.append(0)
 
         //Append some special cases
         firstNumbers.append(0)
-        secondNumbers.append(Decimal(Double.random(in: -10000000...10000000)))
+        secondNumbers.append(Decimal(Double.random(in: -100000000...100000000)))
 
         firstNumbers.append(0)
         secondNumbers.append(0)

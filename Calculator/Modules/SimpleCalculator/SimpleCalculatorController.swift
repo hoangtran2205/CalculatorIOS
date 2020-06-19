@@ -13,6 +13,8 @@ import PKHUD
 
 class SimpleCalculatorController: UIViewController {
 
+    static let MAX_NUMBER_LENGTH = 9
+
     @IBOutlet weak var lblResult: UILabel!
 
     @IBOutlet weak var btnAC: UIButton!
@@ -36,14 +38,15 @@ class SimpleCalculatorController: UIViewController {
 
     let disposedBag = DisposeBag()
 
-    //Store all number buttons, using tag as number value, so easier to control and less code
+    ///Store all number buttons, using tag as number value, so easier to control and less code
     var numberButtons: [UIButton]!
 
     var selectedOperator: Operator?
     var firstNumber: Decimal?
     var secondNumber: Decimal?
     var hasOperator: Bool = false
-    var isInNewRound = true //If operators chaining will continue as new number
+    ///If operators chaining will continue as new number
+    var isInNewRound = true
 
     let result: BehaviorRelay<String> = BehaviorRelay(value: "0")
 
@@ -164,7 +167,12 @@ extension SimpleCalculatorController {
         }
 
         if isAppend {
-            newText = self.result.value + String(num)
+            let tempNum = self.result.value + String(num)
+            if tempNum.replacingOccurrences(of: ".", with: "").count <= SimpleCalculatorController.MAX_NUMBER_LENGTH {
+                newText = tempNum
+            } else {
+                newText = self.result.value
+            }
         } else {
             newText = String(num)
         }
@@ -205,7 +213,7 @@ extension SimpleCalculatorController {
         if let firstNumber = self.firstNumber,
             let secondNumber = self.secondNumber,
             let selectedOperator = self.selectedOperator {
-            let result = self.calculatorManager.calculate(firstNumber: firstNumber, secondNumber: secondNumber, _operator: selectedOperator)            
+            let result = self.calculatorManager.calculate(firstNumber: firstNumber, secondNumber: secondNumber, _operator: selectedOperator)
 
             self.result.accept(self.calculatorManager.printer.getDisplayResult(result: result))
 
